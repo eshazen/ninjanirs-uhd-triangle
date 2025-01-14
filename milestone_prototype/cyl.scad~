@@ -1,0 +1,10 @@
+$fn=64;
+e = 0.1;
+
+dia = 6;
+wall = 0.4;
+hgt = 10;
+
+difference() {
+  cylinder( h=hgt, d=dia);
+}
