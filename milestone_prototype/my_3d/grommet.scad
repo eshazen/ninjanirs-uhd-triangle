@@ -14,6 +14,7 @@ gheight = 5.0;
 
 garm_wid = 10;
 
+// hole for spring?
 gcenter_hole = 1.67;
 
 module gbody() {
@@ -45,12 +46,19 @@ module grommet3() {
 	cube( [ring_offset-gcenter_hole/4-ghole_dia/2, garm_wid, thick]);
     }
   }
+  // fill in the center with a small plug
+  translate( [0, 0, -gtop_hgt])
+    cylinder( d=2, h=thick);
 }
 
 module grommets() {
     difference() {
     grommet3();
-    translate( [0, 0, -gheight-e])
-    cylinder( h=gheight+2*e, d=gcenter_hole);
+    // option:  center hole
+    //    translate( [0, 0, -gheight-e]) cylinder( h=gheight+2*e, d=gcenter_hole);
+    
     }
+    // option: loop to hook on spring
+    translate( [0, -wire_dia/2, attach_ring_dia/2-attach_wire_dia])
+      spring_attach();
 }

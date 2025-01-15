@@ -1,7 +1,8 @@
 
+// the order of these may be important
+include <spring.scad>
 include <optode.scad>
 include <springtop.scad>
-include <spring.scad>
 include <grommet.scad>
 
 module optodes() {
@@ -13,10 +14,11 @@ module optodes() {
   }
 }
 
-color("#404040") translate( [0, 0, -11]) grommets();
+color("#909050") translate( [0, 0, -11]) grommets();
 color("white") springtop();
 color("red") optodes();
-color("blue") translate([0, 0, 1.5*thick-spring_len]) spring();
+// color("red") optode();
+color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
 
 
 
