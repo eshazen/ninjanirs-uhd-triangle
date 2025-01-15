@@ -1,0 +1,16 @@
+// one "grommet"
+
+$fn = 128;
+e = 0.1;
+
+gtop_dia1 = 12.72;
+gtop_dia2 = 12.53;
+gtop_hgt = 1.5;
+
+ghole_dia = 7.2;
+
+module grommet() {
+  difference() {
+    cylinder( d1=gtop_dia2, d2=gtop_dia1, h=gtop_hgt);
+  }
+}

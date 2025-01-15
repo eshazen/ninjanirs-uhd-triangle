@@ -1,0 +1,20 @@
+$fn=128;
+e = 0.1;
+  
+ring_dia = 6.5;
+ring_hole = 3.5;
+
+ring_offset = 7.51;
+spring_hole = 1.5;
+
+thick = 1.5;
+
+arm_wid = 3.0;
+
+module ring() {
+  difference() {
+    cylinder( d=ring_dia, h=thick);
+    translate( [0, 0, -e])
+      cylinder( d=ring_hole, h=thick+2*e);
+  }
+}

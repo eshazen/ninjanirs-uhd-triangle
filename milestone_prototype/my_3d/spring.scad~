@@ -1,0 +1,8 @@
+$fn=128;
+
+spring_dia = 4.0;
+spring_len = 10;
+
+module spring() {
+  cylinder( h=spring_len, d=spring_dia);
+}
