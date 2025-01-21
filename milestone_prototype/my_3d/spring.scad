@@ -5,8 +5,8 @@ mm = 25.4;
 spring_dia = 0.094*mm;
 spring_len = 0.5*mm;
 wire_dia = 0.012*mm;
-attach_wire_dia = 0.75;
-attach_ring_dia = 4;
+attach_wire_dia = 1.5;
+attach_ring_dia = 5;
 
 coil_len = spring_len - 2*spring_dia;
 
@@ -28,10 +28,14 @@ module hook() {
 
 // define a module to create a ring to hook the spring onto
 module spring_attach() {
-  rotate( [90, 0, 0]) {
+  rotate( [90, 180, 0]) {
     translate( [0, 0, -attach_wire_dia/2]) {
       difference() {
-	cylinder( h=attach_wire_dia, d=attach_ring_dia);
+	   union() {
+		cylinder( h=attach_wire_dia, d=attach_ring_dia);
+		translate( [-attach_ring_dia/2, 0, 0])
+		     cube( [attach_ring_dia, attach_ring_dia/2, attach_wire_dia]);
+	   }
 	translate( [0, 0, -e])
 	  cylinder( h=attach_wire_dia+2*e, d=attach_ring_dia-2*attach_wire_dia);
       }

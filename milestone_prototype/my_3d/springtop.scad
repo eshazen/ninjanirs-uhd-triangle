@@ -44,10 +44,9 @@ module rings() {
 module hub() {
   difference() {
     cylinder( d=hub_dia, h=thick);
-    //    translate( [0, 0, -e])
-    //      cylinder( d=hub_hole, h=thick+2*e);
   }
   translate( [0, 0, -attach_ring_dia/3])
+       rotate( [0, 180, 0])
   spring_attach();
 }
 
