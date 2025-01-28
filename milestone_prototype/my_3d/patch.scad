@@ -16,14 +16,14 @@ module optodes() {
 }
 
 // scale up for big print
-big = 3;
+big = 1;
 
 scale( [big, big, big]) {
 
-//color("#909050") translate( [0, 0, -11]) grommets();
-//color("white") springtop();
-//color("red") optodes();
-% optode();
+color("#909050") translate( [0, 0, -11]) grommets();
+color("white") springtop();
+color("red") optodes();
+// % optode();
 
 //color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
 
