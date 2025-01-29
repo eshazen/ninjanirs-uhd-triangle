@@ -1,6 +1,12 @@
+//
+// draw a hollow optode body with up to 3 slots for flexis
+//
 
 $fn = 128;
 e = 0.1;
+
+slot_hgt = 8;
+slot_wid = 4;
 
 body_dia = 10;
 body_hgt = 10;
@@ -21,11 +27,24 @@ lg_hol = 3;			/* light pipe hole */
 lg_spc = 0;			/* zero for one light pipe */
 // lg_spc = 3.2; // (for two light pipes)
 
-module body() {
+module body( a1, w1, a2, w2, a3, w3) {
      difference() {
 	  cylinder( h=body_hgt, d=body_dia);
 	  translate( [0, 0, body_floor])
 	       cylinder( d=body_opening, h=body_hgt);
+	  if( w1 > 0)
+	    rotate([ 0, 0, a1])
+	    translate( [0, -w1/2, body_hgt-slot_hgt+e])
+	      cube( [body_dia+2, w1, slot_hgt]);
+	  if( w2 > 0)
+	    rotate([ 0, 0, a2])
+	    translate( [0, -w2/2, body_hgt-slot_hgt+e])
+	      cube( [body_dia+2, w2, slot_hgt]);
+	  if( w3 > 0)
+	    rotate([ 0, 0, a3])
+	    translate( [0, -w3/2, body_hgt-slot_hgt+e])
+	      cube( [body_dia+2, w3, slot_hgt]);
+	  
      }
 }
 
@@ -41,10 +60,10 @@ module lg() {
      cylinder( h=lg_hgt, d=lg_dia);
 }
 
-module optode() {
+module optode( a1, w1, a2, w2, a3, w3) {
      difference() {
 	  union() {
-	       body();
+	       body( a1, w1, a2, w2, a3, w3);
 //  translate( [0, 0, body_hgt])
 //    peg();
 	       translate( [0, 0, -tail_hgt])

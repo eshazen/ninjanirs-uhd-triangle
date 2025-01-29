@@ -1131,8 +1131,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "9c701847-a3d4-45f1-8123-7ed5a401cbd8")
 		(property "Reference" "J1"
@@ -1205,8 +1205,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "d5707d06-a99e-4148-82ac-26d5f997b380")
 		(property "Reference" "J2"
