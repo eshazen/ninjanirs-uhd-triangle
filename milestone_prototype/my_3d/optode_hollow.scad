@@ -2,7 +2,6 @@
 // draw a hollow optode body with up to 3 slots for flexis
 //
 
-$fn = 128;
 e = 0.1;
 
 slot_hgt = 8;

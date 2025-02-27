@@ -28,8 +28,8 @@ module peg() {
   cylinder( h=peg_hgt, d=peg_dia);
 }
 
-module lg() {
-  cylinder( h=lg_hgt, d=lg_dia);
+module lg(dia) {
+  cylinder( h=lg_hgt, d=dia);
 }
 
 module optode() {
@@ -38,10 +38,10 @@ module optode() {
     peg();
   translate( [0, 0, -tail_hgt])
     tail();
-  translate( [-lg_spc/2, 0, -lg_hgt])
-    lg();
-  translate( [lg_spc/2, 0, -lg_hgt])
-    lg();
+  // two light guides
+//  translate( [-lg_spc/2, 0, -lg_hgt])    lg(lg_dia);
+//  translate( [lg_spc/2, 0, -lg_hgt])     lg(lg_dia);
+  translate( [0, 0, -lg_hgt]) lg( 3);
 }
 
 

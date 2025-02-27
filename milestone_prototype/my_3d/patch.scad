@@ -1,9 +1,16 @@
+$fn=128;
 
 // the order of these may be important
 include <spring.scad>
-// include <optode.scad>
-include <optode_hollow.scad>
+include <optode.scad>
+// include <optode_hollow.scad>
 include <springtop.scad>
+
+// this is OK at 3X scale but not at 1X
+
+ghole_dia = 7.25;
+// ghole_dia = 7.5;   // pretty loose fit at 1x with 0.2mm nozzle high res
+
 include <grommet.scad>
 
 module optodes( spread) {
@@ -23,14 +30,16 @@ module optodes( spread) {
 }
 
 // scale up for big print
-big = 3;
+big = 1;
 
 scale( [big, big, big]) {
 
-   color("#909050") translate( [0, 0, -11]) grommets();
-  // color("white") springtop();
+//   color("#909050") translate( [0, 0, -11]) grommets();
+//   color("white") springtop();
  //color("red")
- // optodes( 3);
+     optode();
+//     optodes( 2);
+//	  optode( 0, 4, 150, 2, 210, 2);
 
 // color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
 
