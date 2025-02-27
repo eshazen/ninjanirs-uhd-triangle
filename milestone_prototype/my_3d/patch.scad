@@ -34,10 +34,10 @@ big = 1;
 
 scale( [big, big, big]) {
 
-//   color("#909050") translate( [0, 0, -11]) grommets();
+   color("#909050") translate( [0, 0, -11]) grommets();
 //   color("white") springtop();
  //color("red")
-     optode();
+   //     optode();
 //     optodes( 2);
 //	  optode( 0, 4, 150, 2, 210, 2);
 
