@@ -23,8 +23,8 @@ peg_dia = 3;
 peg_hgt = 2.5;
 
 lg_hgt = 8.25;
-lg_dia = 5;			/* light pipe tail diameter */
-lg_hol = 3;			/* light pipe hole */
+lg_dia = 3;			/* light pipe tail diameter */
+lg_hol = 0;			/* light pipe hole (0 for none) */
 
 lg_spc = 0;			/* zero for one light pipe */
 // lg_spc = 3.2; // (for two light pipes)
@@ -78,8 +78,7 @@ module optode( a1, w1, a2, w2, a3, w3) {
 	  union() {
 	       body( a1, w1, a2, w2, a3, w3);
 	       /// translate( [0, 0, body_hgt]) peg();
-	       translate( [0, 0, -tail_hgt])
-		    tail();
+	       translate( [0, 0, -tail_hgt]) tail();
 	       if( lg_spc) {
 		    translate( [-lg_spc/2, 0, -lg_hgt])
 			 lg();
@@ -90,8 +89,7 @@ module optode( a1, w1, a2, w2, a3, w3) {
 			 lg();
 	       }
 	  }
-	  translate( [0, 0, -lg_hgt-e])
-	       cylinder( d=lg_hol, h=30);
+	  if( lg_hol) translate( [0, 0, -lg_hgt-e]) cylinder( d=lg_hol, h=30);
      }
 }
 

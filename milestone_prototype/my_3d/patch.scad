@@ -13,19 +13,22 @@ ghole_dia = 7.25;
 
 include <grommet.scad>
 
-module optodes( spread) {
+module optodes( spread, cap) {
   // 3-way symmetry
   for( a=[0:120:240]) {
     rotate( [0, 0, a]) {
       translate( [spread*ring_offset, 0, -body_hgt-0.5]) {
-	if( a == 0) {
-	  optode( 0, 4, 150, 2, 210, 2);
-	} else if( a == 120) {
-	  optode( 210, 2, 0, 0, 0, 0);
-	} else {
-	  optode( 150, 2, 0, 0, 0, 0);
+	if( cap == 2 || cap == 3) {
+	  if( a == 0) {
+	    optode( 0, 4, 150, 2, 210, 2);
+	  } else if( a == 120) {
+	    optode( 210, 2, 0, 0, 0, 0);
+	  } else {
+	    optode( 150, 2, 0, 0, 0, 0);
+	  }
 	}
-%	cap();
+	if( cap == 1 || cap == 3)
+	cap();
       }
     }
   }
@@ -33,17 +36,25 @@ module optodes( spread) {
 
 // scale up for big print
 big = 1;
+plate = 1;
 
 scale( [big, big, big]) {
 
+  if( plate == 1) {
+    // optodes( 1, 2);
+    // optodes( 1, 1);
+    // springtop();
+    // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8]) import("hpk_5mm.stl",10);
+    grommets();
+  } else {
    color("#909050") translate( [0, 0, -11]) grommets();
    color("white") springtop();
- //color("red")
-   //     optode();
-     optodes( 1);
-//	  optode( 0, 4, 150, 2, 210, 2);
+   //color("red") optode();
+   optodes( 1, 3);
+   //	optode( 0, 4, 150, 2, 210, 2);
+   color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
 
-  color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
-
- // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8])   color("green") import("hpk_5mm.stl",10);
+   // flexi circuit
+   rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8])   color("green") import("hpk_5mm.stl",10);
+  }
 }
