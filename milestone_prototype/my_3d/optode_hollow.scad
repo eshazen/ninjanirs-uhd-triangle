@@ -7,8 +7,11 @@ e = 0.1;
 slot_hgt = 8;
 slot_wid = 4;
 
+cap_thk = 2;
+cap_rim = 1;
+
 body_dia = 10;
-body_hgt = 10;
+body_hgt = 10-cap_thk;
 
 body_opening = 8;		/* cavity diameter for electronics */
 body_floor = 1.5;		/* body floor thickness*/
@@ -55,16 +58,26 @@ module peg() {
   cylinder( h=peg_hgt, d=peg_dia);
 }
 
+module cap() {
+     translate( [0, 0, body_hgt]) {
+	  peg();
+	  translate( [0, 0, -cap_thk+e])
+	       cylinder( d=body_dia, h=cap_thk);
+	  translate( [0, 0, -cap_thk-cap_rim+e])
+	       cylinder( d=body_opening-0.1, h=cap_rim);
+     }
+}
+
 module lg() {
      cylinder( h=lg_hgt, d=lg_dia);
 }
 
 module optode( a1, w1, a2, w2, a3, w3) {
+     translate( [0, 0, -cap_thk])
      difference() {
 	  union() {
 	       body( a1, w1, a2, w2, a3, w3);
-//  translate( [0, 0, body_hgt])
-//    peg();
+	       /// translate( [0, 0, body_hgt]) peg();
 	       translate( [0, 0, -tail_hgt])
 		    tail();
 	       if( lg_spc) {
