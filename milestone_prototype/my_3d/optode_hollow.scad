@@ -4,11 +4,11 @@
 
 e = 0.1;
 
-slot_hgt = 8;
+slot_hgt = 5;
 slot_wid = 4;
 
 cap_thk = 2;
-cap_rim = 1;
+cap_rim = 4.5;
 
 body_dia = 10;
 body_hgt = 10-cap_thk;

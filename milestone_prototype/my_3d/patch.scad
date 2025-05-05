@@ -28,7 +28,7 @@ module optodes( spread, cap) {
 	  }
 	}
 	if( cap == 1 || cap == 3)
-	cap();
+%	cap();
       }
     }
   }
@@ -41,11 +41,13 @@ plate = 1;
 scale( [big, big, big]) {
 
   if( plate == 1) {
-    // optodes( 1, 2);
+       // optode( 0, 4, 150, 2, 210, 2);
+       optodes( 2, 3);
+       
     // optodes( 1, 1);
     // springtop();
     // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8]) import("hpk_5mm.stl",10);
-    grommets();
+    // grommets();
   } else {
    color("#909050") translate( [0, 0, -11]) grommets();
    color("white") springtop();

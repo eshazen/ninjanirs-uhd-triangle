@@ -5,8 +5,8 @@ spring_dia = 0.094*mm;
 spring_len = 0.5*mm;
 wire_dia = 0.012*mm;
 
-attach_wire_dia = 0.9;
-attach_ring_dia = 4;
+attach_wire_dia = 1.1;
+attach_ring_dia = 4.3;
 
 coil_len = spring_len - 2*spring_dia;
 
