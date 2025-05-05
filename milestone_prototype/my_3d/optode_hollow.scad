@@ -14,7 +14,7 @@ body_dia = 10;
 body_hgt = 10-cap_thk;
 
 body_opening = 8;		/* cavity diameter for electronics */
-body_floor = 1.5;		/* body floor thickness*/
+body_floor = 3;		/* body floor thickness*/
 
 tail_dia = 7;
 tail_hgt = 6;

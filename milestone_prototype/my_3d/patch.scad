@@ -42,7 +42,7 @@ scale( [big, big, big]) {
 
   if( plate == 1) {
        // optode( 0, 4, 150, 2, 210, 2);
-       optodes( 2, 3);
+       optodes( 2, 2);
        
     // optodes( 1, 1);
     // springtop();
