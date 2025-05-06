@@ -28,7 +28,7 @@ module optodes( spread, cap) {
 	  }
 	}
 	if( cap == 1 || cap == 3)
-%	cap();
+	cap();
       }
     }
   }
@@ -41,8 +41,9 @@ plate = 1;
 scale( [big, big, big]) {
 
   if( plate == 1) {
-       // optode( 0, 4, 150, 2, 210, 2);
-       optodes( 2, 2);
+        // optode( 0, 4, 150, 2, 210, 2);  // two-opening
+	// optode( 210, 2, 0, 0, 0, 0);       // single opening
+       optodes( 2, 1);
        
     // optodes( 1, 1);
     // springtop();

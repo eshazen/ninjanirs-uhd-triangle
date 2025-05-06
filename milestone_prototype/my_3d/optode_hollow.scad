@@ -23,7 +23,7 @@ peg_dia = 3;
 peg_hgt = 2.5;
 
 lg_hgt = 8.25;
-lg_dia = 3;			/* light pipe tail diameter */
+lg_dia = 3.5;			/* light pipe tail diameter */
 lg_hol = 0;			/* light pipe hole (0 for none) */
 
 lg_spc = 0;			/* zero for one light pipe */
