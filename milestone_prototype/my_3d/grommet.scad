@@ -1,4 +1,6 @@
 // one "grommet"
+//
+// 2025-05-29- add retaining clip
 
 e = 0.1;
 
@@ -14,8 +16,13 @@ gheight = 5.0;
 garm_wid = 10;
 
 // center "rivet" peg
-gpeg_dia = 3;
 gpeg_len = 6;
+
+// for McMaster clip 98410A110
+gpeg_dia = 4.5;
+groove_wid = 0.018*mm;
+groove_dia = 0.168*mm;
+groove_offset = 0.75;		/* offset from end of peg */
 
 // hole for spring?
 gcenter_hole = 1.67;
@@ -57,16 +64,34 @@ module grommet3() {
     cylinder( d=2, h=thick);
 }
 
+// generate a (positive) groove geometry for a McMaster clip
+module clip_groove( dia, wid) {
+  difference() {
+    cylinder( h=wid, d=dia+3);
+    translate( [0, 0, -e])
+      cylinder( h=wid+2*e, d=dia);
+  }
+}
+
+module clip() {
+  rotate( [0, 90, 90])
+    import("98410A110_Ring.stl");
+}
+
 module grommets() {
     difference() {
-    grommet3();
-    // option:  center hole
-    //    translate( [0, 0, -gheight-e]) cylinder( h=gheight+2*e, d=gcenter_hole);
+      grommet3();
+      // option:  center hole
+      //    translate( [0, 0, -gheight-e]) cylinder( h=gheight+2*e, d=gcenter_hole);
     }
     // option: center peg
-    translate( [0, 0, -gpeg_len-gtop_hgt+e])
-    cylinder( d=gpeg_dia, h=gpeg_len);
-
+    translate( [0, 0, -gpeg_len-gtop_hgt+e]) {
+      difference() {
+	cylinder( d=gpeg_dia, h=gpeg_len);
+	translate( [0, 0, groove_offset])
+	  clip_groove( groove_dia, groove_wid);
+      }
+    }
     // option: loop to hook on spring
     translate( [0, -wire_dia/2, attach_ring_dia/2-attach_wire_dia])
       spring_attach();
