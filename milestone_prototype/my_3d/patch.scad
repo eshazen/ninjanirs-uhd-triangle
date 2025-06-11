@@ -1,4 +1,4 @@
-$fn=128;
+$fn=32;
 
 // the order of these may be important
 include <spring.scad>
@@ -30,7 +30,7 @@ module optodes( spread, cap) {
 	  }
 	}
 	if( cap == 1 || cap == 3)
-	cap();
+	  cap();
       }
     }
   }
@@ -40,39 +40,41 @@ module optodes( spread, cap) {
 big = 1;
 plate = 0;
 mesh = 1;
-
+optode_assembly = 0;
 
 module triplet() {
-   color("#909050") translate( [0, 0, -11]) grommets();
-   color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len-gtop_hgt+e-11]) clip();
-   color("white") springtop();
-   color("grey")optodes( 1, 3);
-   color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
-//   // flexi circuit
-//   rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8])   color("green") import("hpk_5mm.stl",10);
-//   // cap
-   color("violet") cap_triad();
+  if( optode_assembly) {
+    color("#909050") translate( [0, 0, -11]) grommets();
+    color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len-gtop_hgt+e-11]) clip();
+    color("white") springtop();
+    color("grey")optodes( 1, 3);
+    color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
+    //   // flexi circuit
+    //   rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8])   color("green") import("hpk_5mm.stl",10);
+  }
+  //   // cap
+  color("violet") cap_triad();
 }
 
 
 scale( [big, big, big]) {
 
   if( plate == 1) { // ---------- for printing individual parts ----------
-       // optode( 0, 4, 150, 2, 210, 2);  // two-opening
-       // optode( 210, 2, 0, 0, 0, 0);       // single opening
-       // optodes( 2, 2);
-       // springtop();
-       // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8]) import("hpk_5mm.stl",10);
-       grommets();
+    // optode( 0, 4, 150, 2, 210, 2);  // two-opening
+    // optode( 210, 2, 0, 0, 0, 0);       // single opening
+    // optodes( 2, 2);
+    // springtop();
+    // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8]) import("hpk_5mm.stl",10);
+    grommets();
 
   } else {  // ---------- for viewing ----------
 
-       triplet();
-       translate( [12*sqrt(3), 0, 0]) triplet();
-       if( mesh) {
-	    translate( [-12*sqrt(3), 0, 0]) triplet();
-	    translate( [-12*sqrt(3)/2, 12*1.5, 0]) triplet();
-	    translate( [12*sqrt(3)/2, 12*1.5, 0]) triplet();
-       }
+    triplet();
+    if( mesh) {
+      translate( [12*sqrt(3), 0, 0]) triplet();
+      translate( [-12*sqrt(3), 0, 0]) triplet();
+      translate( [-12*sqrt(3)/2, 12*1.5, 0]) triplet();
+      translate( [12*sqrt(3)/2, 12*1.5, 0]) triplet();
+    }
   }
 }
