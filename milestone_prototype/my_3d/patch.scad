@@ -6,10 +6,9 @@ include <spring.scad>
 include <optode_hollow.scad>
 include <springtop.scad>
 
-// this is OK at 3X scale but not at 1X
-
-ghole_dia = 7.25;
-// ghole_dia = 7.5;   // pretty loose fit at 1x with 0.2mm nozzle high res
+// if you change this you have to change tail_dia in optode...scad
+// ghole_dia = 7.25;  // nominal size
+ghole_dia = 6.75;
 
 include <grommet.scad>
 
@@ -45,10 +44,10 @@ optode_assembly = 0;
 module triplet() {
   if( optode_assembly) {
     color("#909050") translate( [0, 0, -11]) grommets();
-    color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len-gtop_hgt+e-11]) clip();
-    color("white") springtop();
+    //color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len-gtop_hgt+e-11]) clip();
+    //color("white") springtop();
     color("grey")optodes( 1, 3);
-    color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
+    //color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
     //   // flexi circuit
     //   rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8])   color("green") import("hpk_5mm.stl",10);
   }

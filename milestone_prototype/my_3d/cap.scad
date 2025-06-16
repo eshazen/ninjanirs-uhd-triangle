@@ -3,10 +3,10 @@
 //
 
 cap_hole_dia = gbody_dia;
-cap_ring_wid = 1.2;
-cap_thick = 1;
+cap_ring_wid = 1.5;
+cap_thick = 1.5;
 
-cap_mesh_wid = 1;
+cap_mesh_wid = 1.5;
 
 // generate attachment tabs to merge into continuous mesh
 module cap_mesh() {

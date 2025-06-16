@@ -16,7 +16,10 @@ body_hgt = 10-cap_thk;
 body_opening = 8;		/* cavity diameter for electronics */
 body_floor = 3;		/* body floor thickness*/
 
-tail_dia = 7;
+// this must be appropriately smaller (0.25mm) than ghole_dia in patch.scad
+// tail_dia = 7;
+tail_dia = 6.5;
+
 tail_hgt = 6;
 
 peg_dia = 3;
