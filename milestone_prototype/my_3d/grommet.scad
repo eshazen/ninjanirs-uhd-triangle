@@ -33,6 +33,8 @@ groove_dia = 0.117*mm;
 groove_offset = 0.75;		/* offset from end of peg */
 gpeg_dia = groove_dia + 0.012*mm;
 
+echo("peg dia", gpeg_dia);
+
 // // for McMaster clip 98410A110 (3/16)
 // gpeg_dia = 4.5; // 0.177"
 // groove_wid = 0.018*mm;

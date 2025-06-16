@@ -3,10 +3,26 @@
 //
 
 cap_hole_dia = gbody_dia;
-cap_ring_wid = 1.5;
-cap_thick = 1.5;
+cap_ring_wid = 1.6;
+cap_thick = 1.0;
 
-cap_mesh_wid = 1.5;
+cap_mesh_wid = 0.7;
+
+module test_triangle() {
+  color("red") linear_extrude( height=cap_thk)
+    polygon( points = [[6*sqrt(3)-3, 0], [-3, -6], [-3, 6]]);
+}
+
+// one ring for either source or detector
+module cap_ring() {
+  // optode ring
+  difference() {
+    cylinder( d=cap_hole_dia+2*cap_ring_wid, h=cap_thick);
+    translate( [0, 0, -e])
+      cylinder( d=cap_hole_dia, h=cap_thick+2*e);
+  }
+  cap_mesh();
+}
 
 // generate attachment tabs to merge into continuous mesh
 module cap_mesh() {
@@ -21,9 +37,7 @@ module cap_triad_with_center() {
      for( a=[0:120:240]) {
 	  rotate( [0, 0, a]) {
 	       translate( [ring_offset, 0, 0]) {
-		    // optode ring
-		    cylinder( d=cap_hole_dia+2*cap_ring_wid, h=cap_thick);
-		    cap_mesh();
+		 cap_ring();
 	       }
 	  }
      }
@@ -49,6 +63,9 @@ module cap_triad_rings() {
 module cap_triad() {
      translate( [0, 0, -body_hgt-8.1]) {
 	  cap_triad_rings();
+	  translate( [-6*sqrt(3)-3, 0, 0])
+	    cap_ring();
      }
+     //     color("red") test_triangle();
 }
 

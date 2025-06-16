@@ -45,14 +45,14 @@ module triplet() {
   if( optode_assembly) {
     color("#909050") translate( [0, 0, -11]) grommets();
     //color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len-gtop_hgt+e-11]) clip();
-    //color("white") springtop();
-    color("grey")optodes( 1, 3);
+    //    color("white") springtop();
+     color("grey")optodes( 1, 2);
     //color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
     //   // flexi circuit
-    //   rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8])   color("green") import("hpk_5mm.stl",10);
+       rotate( [0, 0, 90]) translate( [-146.5, 73.8, -7])   color("green") import("hpk_5mm.stl",10);
   }
   //   // cap
-  color("violet") cap_triad();
+  cap_triad();
 }
 
 
@@ -70,10 +70,16 @@ scale( [big, big, big]) {
 
     triplet();
     if( mesh) {
-      translate( [12*sqrt(3), 0, 0]) triplet();
-      translate( [-12*sqrt(3), 0, 0]) triplet();
-      translate( [-12*sqrt(3)/2, 12*1.5, 0]) triplet();
-      translate( [12*sqrt(3)/2, 12*1.5, 0]) triplet();
+      translate( [12*sqrt(3), 12, 0]) triplet();
+      translate( [12*sqrt(3), -12, 0]) triplet();
+      translate( [-12*sqrt(3), 12, 0]) triplet();
+      translate( [-12*sqrt(3), -12, 0]) triplet();
+      translate( [0, -24, 0]) triplet();      
+      translate( [0, 24, 0]) triplet();      
+//      translate( [12*sqrt(3), 0, 0]) triplet();
+//      translate( [-12*sqrt(3), 0, 0]) triplet();
+//      translate( [-12*sqrt(3)/2, 12*1.5, 0]) triplet();
+//      translate( [12*sqrt(3)/2, 12*1.5, 0]) triplet();
     }
   }
 }
