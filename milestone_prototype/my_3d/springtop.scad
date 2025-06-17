@@ -7,9 +7,6 @@ e = 0.1;
 ring_dia = 7;
 ring_hole = 3.5;
 
-// ring_offset = 7.51;   // for 13mm center-to-center
-ring_offset = 6.928;	// for 12mm center-to-center
-
 hub_dia = 6.5;
 hub_thk = 1.8;
 
@@ -32,7 +29,7 @@ module ring() {
 module rings() {
   // 3-way symmetry
   for( a=[0:120:240]) {
-    rotate( [0, 0, a]) {
+    rotate( [0, 0, a-60]) {
       // generate ring
       translate( [ring_offset, 0, 0]) ring();
       // generate arm, sloping upwards

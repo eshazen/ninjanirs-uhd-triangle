@@ -1,4 +1,13 @@
-$fn=32;
+// basic geometry
+include <geom.scad>
+
+// ---------- Settings for rendering ----------
+big = 1;			/* overall scale */
+plate = 0;			/* flag: individual parts for 3D print plate */
+mesh = 1;			/* generate a mesh */
+optode_assembly = 1;		/* generate the optodes */
+spo = 0;			/* spread for optodes from nominal positions */
+sources = 0;			/* generate source optodes */
 
 // the order of these may be important
 include <spring.scad>
@@ -6,19 +15,17 @@ include <spring.scad>
 include <optode_hollow.scad>
 include <springtop.scad>
 
-// if you change this you have to change tail_dia in optode...scad
-// ghole_dia = 7.25;  // nominal size
-ghole_dia = 6.75;
-
 include <grommet.scad>
-
 include <cap.scad>
+include <hex.scad>
 
 module optodes( spread, cap) {
+  optode_down = -body_hgt-0.5;
   // 3-way symmetry
+  color("gray")
   for( a=[0:120:240]) {
-    rotate( [0, 0, a]) {
-      translate( [spread*ring_offset, 0, -body_hgt-0.5]) {
+    rotate( [0, 0, a-60]) {
+      translate( [spread*ring_offset, 0, optode_down]) {
 	if( cap == 2 || cap == 3) {
 	  if( a == 0) {
 	    optode( 0, 4, 150, 2, 210, 2);
@@ -33,28 +40,38 @@ module optodes( spread, cap) {
       }
     }
   }
+  if( sources) {
+    translate( [-6*sqrt(3)-3, 0, optode_down]) {
+      color("#c00000") {
+	optode( 0, 0, 0, 0, 0, 0);
+	cap();
+      }
+    }
+  }
+    
 }
-
-// scale up for big print
-big = 1;
-plate = 0;
-mesh = 1;
-optode_assembly = 0;
 
 module triplet() {
   if( optode_assembly) {
     color("#909050") translate( [0, 0, -11]) grommets();
-    //color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len-gtop_hgt+e-11]) clip();
-    //    color("white") springtop();
-     color("grey")optodes( 1, 2);
-    //color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
+    color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len-gtop_hgt+e-11]) clip();
+    color("white") springtop();
+    optodes( 1, 3);
+    color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
     //   // flexi circuit
-       rotate( [0, 0, 90]) translate( [-146.5, 73.8, -7])   color("green") import("hpk_5mm.stl",10);
+     //       rotate( [0, 0, 90]) translate( [-146.5, 73.8, -7])   color("green") import("hpk_5mm.stl",10);
   }
   //   // cap
-  cap_triad();
+  color("violet") cap_triad();
 }
 
+// coords for 7 patches
+pat_coords = [ [center_dist*sqrt(3)+spo, center_dist+spo, 0],
+	       [center_dist*sqrt(3)+spo, -center_dist-spo, 0],
+	       [-center_dist*sqrt(3)-spo, center_dist+spo, 0],
+	       [-center_dist*sqrt(3)-spo, -center_dist-spo, 0],
+	       [0, -2*center_dist-2*spo, 0],
+	       [0, 2*center_dist+2*spo, 0] ];
 
 scale( [big, big, big]) {
 
@@ -70,16 +87,13 @@ scale( [big, big, big]) {
 
     triplet();
     if( mesh) {
-      translate( [12*sqrt(3), 12, 0]) triplet();
-      translate( [12*sqrt(3), -12, 0]) triplet();
-      translate( [-12*sqrt(3), 12, 0]) triplet();
-      translate( [-12*sqrt(3), -12, 0]) triplet();
-      translate( [0, -24, 0]) triplet();      
-      translate( [0, 24, 0]) triplet();      
-//      translate( [12*sqrt(3), 0, 0]) triplet();
-//      translate( [-12*sqrt(3), 0, 0]) triplet();
-//      translate( [-12*sqrt(3)/2, 12*1.5, 0]) triplet();
-//      translate( [12*sqrt(3)/2, 12*1.5, 0]) triplet();
+      for( c  = pat_coords)
+	translate( [c[0], c[1], 0]) triplet();
     }
   }
 }
+
+
+translate ([-hex_a, 0, -body_hgt-8.1])
+hexr(2);
+

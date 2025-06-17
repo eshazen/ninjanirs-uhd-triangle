@@ -11,14 +11,10 @@ cap_thk = 2;
 cap_rim = 4.5;
 
 body_dia = 10;
-body_hgt = 10-cap_thk;
+body_hgt = optode_height-cap_thk;
 
 body_opening = 8;		/* cavity diameter for electronics */
 body_floor = 3;		/* body floor thickness*/
-
-// this must be appropriately smaller (0.25mm) than ghole_dia in patch.scad
-// tail_dia = 7;
-tail_dia = 6.5;
 
 tail_hgt = 6;
 

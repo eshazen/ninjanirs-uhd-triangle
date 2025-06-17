@@ -35,7 +35,7 @@ module cap_mesh() {
 
 module cap_triad_with_center() {
      for( a=[0:120:240]) {
-	  rotate( [0, 0, a]) {
+	  rotate( [0, 0, a-60]) {
 	       translate( [ring_offset, 0, 0]) {
 		 cap_ring();
 	       }
@@ -49,7 +49,7 @@ module cap_triad_rings() {
      difference() {
 	  cap_triad_with_center();
 	  for( a=[0:120:240]) {
-	       rotate( [0, 0, a]) {
+	       rotate( [0, 0, a-60]) {
 		    translate( [ring_offset, 0, -e]) {
 			 cylinder( d=cap_hole_dia, h=cap_thick+2*e);
 		    }
@@ -63,9 +63,8 @@ module cap_triad_rings() {
 module cap_triad() {
      translate( [0, 0, -body_hgt-8.1]) {
 	  cap_triad_rings();
-	  translate( [-6*sqrt(3)-3, 0, 0])
-	    cap_ring();
+	  if( sources) 
+	   translate( [-6*sqrt(3)-3, 0, 0]) cap_ring();
      }
-     //     color("red") test_triangle();
 }
 
