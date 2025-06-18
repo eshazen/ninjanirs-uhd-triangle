@@ -17,14 +17,14 @@ include <springtop.scad>
 
 include <grommet.scad>
 include <cap.scad>
-include <hex.scad>
+include <newhex.scad>
 
 module optodes( spread, cap) {
   optode_down = -body_hgt-0.5;
   // 3-way symmetry
   color("gray")
   for( a=[0:120:240]) {
-    rotate( [0, 0, a-60]) {
+    rotate( [0, 0, a]) {
       translate( [spread*ring_offset, 0, optode_down]) {
 	if( cap == 2 || cap == 3) {
 	  if( a == 0) {
@@ -62,7 +62,7 @@ module triplet() {
      //       rotate( [0, 0, 90]) translate( [-146.5, 73.8, -7])   color("green") import("hpk_5mm.stl",10);
   }
   //   // cap
-  color("violet") cap_triad();
+  //  color("violet") cap_triad();
 }
 
 // coords for 7 patches
@@ -94,6 +94,9 @@ scale( [big, big, big]) {
 }
 
 
-translate ([-hex_a, 0, -body_hgt-8.1])
-hexr(2);
+//translate ([-hex_a, 0, -body_hgt-8.1])
+translate ([-hex_a, 0, -body_hgt-10.1])
+hexl( 6, 4);
+
+
 

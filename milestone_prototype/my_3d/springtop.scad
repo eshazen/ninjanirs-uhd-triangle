@@ -29,7 +29,7 @@ module ring() {
 module rings() {
   // 3-way symmetry
   for( a=[0:120:240]) {
-    rotate( [0, 0, a-60]) {
+    rotate( [0, 0, a]) {
       // generate ring
       translate( [ring_offset, 0, 0]) ring();
       // generate arm, sloping upwards

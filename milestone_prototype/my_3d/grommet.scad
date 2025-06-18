@@ -62,7 +62,7 @@ module grommet() {
 
 module grommet3() {
   for( a=[0:120:240]) {
-    rotate( [0, 0, a-60]) {
+    rotate( [0, 0, a]) {
       // generate one grommet
       translate( [ring_offset, 0, 0]) grommet();
       // generate body
