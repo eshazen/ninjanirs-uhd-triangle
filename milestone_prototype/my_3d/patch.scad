@@ -94,8 +94,7 @@ scale( [big, big, big]) {
 }
 
 
-//translate ([-hex_a, 0, -body_hgt-8.1])
-translate ([-hex_a, 0, -body_hgt-10.1])
+translate ([-hex_a, 0, -body_hgt-8.1])
 hexl( 6, 4);
 
 

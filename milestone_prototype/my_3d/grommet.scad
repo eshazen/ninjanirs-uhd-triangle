@@ -12,7 +12,6 @@ gtop_dia1 = 11.75;
 gtop_dia2 = 11.5;
 gtop_hgt = 1.5;
 
-
 //gwall_thk = 0.5;
 gwall_thk = 1.0;
 
