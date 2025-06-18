@@ -32,6 +32,10 @@ module hex() {
   }
 }
 
+//
+// recursively generate a hexagonal mesh
+// (very inefficient)
+//
 module hexr( order) {
   if( order == 0) {
     for( pt = verts) {
