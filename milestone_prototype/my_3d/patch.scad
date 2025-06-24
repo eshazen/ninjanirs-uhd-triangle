@@ -61,7 +61,7 @@ module triplet() {
     //   // flexi circuit
      //       rotate( [0, 0, 90]) translate( [-146.5, 73.8, -7])   color("green") import("hpk_5mm.stl",10);
   }
-  //   // cap
+  // cap
   //  color("violet") cap_triad();
 }
 
@@ -77,11 +77,12 @@ scale( [big, big, big]) {
 
   if( plate == 1) { // ---------- for printing individual parts ----------
     // optode( 0, 4, 150, 2, 210, 2);  // two-opening
+    optode( 0, 0, 0, 0, 0, 0);       // no openings
     // optode( 210, 2, 0, 0, 0, 0);       // single opening
-    // optodes( 2, 2);
-    // springtop();
+    // optodes( 2, 3);
+    springtop();
     // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8]) import("hpk_5mm.stl",10);
-    grommets();
+    // grommets();
 
   } else {  // ---------- for viewing ----------
 
@@ -94,8 +95,7 @@ scale( [big, big, big]) {
 }
 
 
-translate ([-hex_a, 0, -body_hgt-8.1])
-hexl( 6, 4);
+translate ([-hex_a, 0, -body_hgt-8.1]) hexl( 6, 4);
 
 
 
