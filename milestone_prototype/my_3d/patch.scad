@@ -3,11 +3,13 @@ include <geom.scad>
 
 // ---------- Settings for rendering ----------
 big = 1;			/* overall scale */
-plate = 0;			/* flag: individual parts for 3D print plate */
+plate = 1;			/* flag: individual parts for 3D print plate */
 mesh = 1;			/* generate a mesh */
 optode_assembly = 1;		/* generate the optodes */
 spo = 0;			/* spread for optodes from nominal positions */
 sources = 0;			/* generate source optodes */
+show_hex = 0;			/* show hex mesh */
+body_solid = 1;			/* solid optode for easier printing */
 
 // the order of these may be important
 include <spring.scad>
@@ -35,8 +37,14 @@ module optodes( spread, cap) {
 	    optode( 150, 2, 0, 0, 0, 0);
 	  }
 	}
-	if( cap == 1 || cap == 3)
-	  cap();
+	if( cap == 1 || cap == 3) {
+	  if( body_solid) {
+	    translate( [0, 0, -e])
+	      cap();
+	  } else {
+	    cap();
+	  }
+	}
       }
     }
   }
@@ -77,12 +85,12 @@ scale( [big, big, big]) {
 
   if( plate == 1) { // ---------- for printing individual parts ----------
     // optode( 0, 4, 150, 2, 210, 2);  // two-opening
-    optode( 0, 0, 0, 0, 0, 0);       // no openings
+    // optode( 0, 0, 0, 0, 0, 0);       // no openings
     // optode( 210, 2, 0, 0, 0, 0);       // single opening
     // optodes( 2, 3);
-    springtop();
+    // springtop();
     // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8]) import("hpk_5mm.stl",10);
-    // grommets();
+    grommets();
 
   } else {  // ---------- for viewing ----------
 
@@ -94,8 +102,7 @@ scale( [big, big, big]) {
   }
 }
 
-
-translate ([-hex_a, 0, -body_hgt-8.1]) hexl( 6, 4);
+if( show_hex) translate ([-hex_a, 0, -body_hgt-8.1]) hexl( 6, 4);
 
 
 

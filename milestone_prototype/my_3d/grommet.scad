@@ -12,11 +12,12 @@ gtop_dia1 = 11.75;
 gtop_dia2 = 11.5;
 gtop_hgt = 1.5;
 
+g_shoulder = 2.5;		/* shoulder to support mesh */
+
 //gwall_thk = 0.5;
 gwall_thk = 1.0;
 
-// ghole_dia from patch.scad
-
+// ghole_dia from geom.scad
 gbody_dia = ghole_dia+2*gwall_thk;
 
 gheight = 5.0;
@@ -29,6 +30,7 @@ gpeg_len = 5;
 // for McMaster clip 98410A111 (1/8)
 groove_wid = 0.012*mm;
 groove_dia = 0.117*mm;
+// groove_dia = 0.1*mm;    /* make more visible for render */
 groove_offset = 0.75;		/* offset from end of peg */
 gpeg_dia = groove_dia + 0.012*mm;
 
@@ -93,15 +95,16 @@ module clip() {
        import("98410A111_Ring.stl");       
 }
 
+
 module apeg( p_dia, p_len, g_offset, g_dia, g_wid)
 {
-//     echo("peg(", p_dia, p_len, g_offset, g_dia, g_wid);
-     // option: center peg
      difference() {
 	  cylinder( d=p_dia, h=p_len);
 	  translate( [0, 0, g_offset])
 	       clip_groove( g_dia, g_wid);
      }
+     translate( [0, 0, p_len-g_shoulder])
+     cylinder( d=p_dia+2.5, h=g_shoulder);
 }
 
 module grommets() {

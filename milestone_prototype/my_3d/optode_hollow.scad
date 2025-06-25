@@ -23,33 +23,34 @@ peg_hgt = 2.5;
 // lg_hgt = 8.25;
 lg_hgt = 9.25;
 lg_dia = 3.5;			/* light pipe tail diameter */
-lg_hol = 1;			/* light pipe hole (0 for none) */
+lg_hol = 0;			/* light pipe hole (0 for none) */
 
 lg_spc = 0;			/* zero for one light pipe */
 // lg_spc = 3.2; // (for two light pipes)
 
 module body_shape() {
-%      cylinder( h=body_hgt, d=body_dia);
+      cylinder( h=body_hgt, d=body_dia);
 }
 
 module body( a1, w1, a2, w2, a3, w3) {
      difference() {
 	  body_shape();
-	  translate( [0, 0, body_floor])
-	       cylinder( d=body_opening, h=body_hgt);
-	  if( w1 > 0)
-	    rotate([ 0, 0, a1])
-	    translate( [0, -w1/2, body_hgt-slot_hgt+e])
-	      cube( [body_dia+2, w1, slot_hgt]);
-	  if( w2 > 0)
-	    rotate([ 0, 0, a2])
-	    translate( [0, -w2/2, body_hgt-slot_hgt+e])
-	      cube( [body_dia+2, w2, slot_hgt]);
-	  if( w3 > 0)
-	    rotate([ 0, 0, a3])
-	    translate( [0, -w3/2, body_hgt-slot_hgt+e])
-	      cube( [body_dia+2, w3, slot_hgt]);
-	  
+	  if( !body_solid) {
+	    translate( [0, 0, body_floor])
+	      cylinder( d=body_opening, h=body_hgt);
+	    if( w1 > 0)
+	      rotate([ 0, 0, a1])
+		translate( [0, -w1/2, body_hgt-slot_hgt+e])
+		cube( [body_dia+2, w1, slot_hgt]);
+	    if( w2 > 0)
+	      rotate([ 0, 0, a2])
+		translate( [0, -w2/2, body_hgt-slot_hgt+e])
+		cube( [body_dia+2, w2, slot_hgt]);
+	    if( w3 > 0)
+	      rotate([ 0, 0, a3])
+		translate( [0, -w3/2, body_hgt-slot_hgt+e])
+		cube( [body_dia+2, w3, slot_hgt]);
+	  }
      }
 }
 

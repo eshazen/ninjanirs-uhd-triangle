@@ -14,6 +14,8 @@ include <cap.scad>
 
 $fn = 64;
 
+body_solid = 1;
+
 e = 0.1;
 gpeg_dia = 3;
 
@@ -21,19 +23,22 @@ hex_c2c = 24;			/* center-to-center distance */
 hex_a = hex_c2c/3*sqrt(3);	/* edge length */
 hex_h = hex_c2c/2;
 
-hex_thk = 0.8;
+hex_thk = 1.0;
 hex_wid = 1.2;
 
 show_grommets = 1;
-show_optodes = 0;
+show_optodes = 1;
+show_mesh = 0;
 
-rows = 3;
+rows = 1;
 cols = 1;
+
+optode_assembly_offset = 0.8;
 
 mesh_color = "#006000";
 
 module optodes( spread, cap) {
-  optode_down = -body_hgt-0.5;
+  optode_down = -body_hgt-0.5+ optode_assembly_offset;
   // 3-way symmetry
   color("gray")
   for( a=[0:120:240]) {
@@ -59,7 +64,9 @@ module optodes( spread, cap) {
 module detector() {
      rotate( [0, 0, 60]) {
 	  if( show_grommets)
-	       color("#909050") translate( [0, 0, 4.5]) grommets();
+	       color("#909050") translate( [0, 0, 4.5+optode_assembly_offset]) grommets();
+	  color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len+3.1+optode_assembly_offset]) clip();
+
 	  if( show_optodes)
 	  translate( [0, 0, 16]) {
 	       color("#808080") optodes(1,3);
@@ -67,6 +74,7 @@ module detector() {
 	  }
 
      }
+     //     if( show_mesh)
      color( mesh_color) cylinder( h=hex_thk, d=5);
 }
 
@@ -90,6 +98,7 @@ module source_hole() {
 
 // draw a "star" from a virtex
 module star() {
+  if( show_mesh)
      color(mesh_color)
 	  for( th = [0:120:240])
 	       rotate( [0, 0, th])
@@ -115,15 +124,17 @@ module hexl_mesh( rows, cols) {
 	// loop over rows
 	for( i = [0:rows]) {
 	  translate( [0, 2*hex_h*i, 0]) {
-	    star();
-	    source();
+	    if( show_mesh) {
+	      star();
+	      source();
+	    }
 	    translate( [hex_a/2, hex_h, 0]) {
 	      detector();
 	      star();
 	    }
 	    translate( [1.5*hex_a, hex_h, 0]) {
 	      star();
-	      source();
+	      if( show_mesh) source();
 	      translate( [hex_a/2, hex_h, 0]) {
 		detector();
 		star();
@@ -164,9 +175,10 @@ module hexl_holes( rows, cols) {
 echo("hex_a = ", hex_a);
 echo("ghole_dia = ", ghole_dia);
 
-// rotate([180, 0, 0])
+rotate([180, 0, 0])
 difference() {
-  hexl_mesh( rows, cols);
-  hexl_holes( rows, cols);
+     hexl_mesh( rows, cols);
+     if( show_mesh)
+     hexl_holes( rows, cols);
 }
 
