@@ -95,7 +95,7 @@ module clip() {
 
 module apeg( p_dia, p_len, g_offset, g_dia, g_wid)
 {
-     echo("peg(", p_dia, p_len, g_offset, g_dia, g_wid);
+//     echo("peg(", p_dia, p_len, g_offset, g_dia, g_wid);
      // option: center peg
      difference() {
 	  cylinder( d=p_dia, h=p_len);
