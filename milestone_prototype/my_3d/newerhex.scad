@@ -26,14 +26,18 @@ hex_h = hex_c2c/2;
 hex_thk = 1.0;
 hex_wid = 1.2;
 
-show_grommets = 1;
-show_optodes = 1;
-show_mesh = 0;
+show_grommets = 0;
+show_optodes = 0;
+show_mesh = 1;
 
 rows = 1;
 cols = 1;
 
 optode_assembly_offset = 0.8;
+
+// hole for detector triode mounting in cap material
+gdet_hole_dia = gpeg_dia+0.2;
+echo("hole = ", gdet_hole_dia);
 
 mesh_color = "#006000";
 
@@ -63,10 +67,10 @@ module optodes( spread, cap) {
 // draw an attachment donut for detector triad
 module detector() {
      rotate( [0, 0, 60]) {
-	  if( show_grommets)
+       if( show_grommets) {
 	       color("#909050") translate( [0, 0, 4.5+optode_assembly_offset]) grommets();
-	  color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len+3.1+optode_assembly_offset]) clip();
-
+	  	  color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len+3.1+optode_assembly_offset]) clip();
+       }
 	  if( show_optodes)
 	  translate( [0, 0, 16]) {
 	       color("#808080") optodes(1,3);
@@ -83,7 +87,7 @@ module detector() {
 // draw a donut hole
 module detector_hole() {
   translate( [0, 0, -e])
-    cylinder( h=hex_thk+2*e, d=gpeg_dia+0.2);
+    cylinder( h=hex_thk+2*e, d=gdet_hole_dia);
 }
 
 // draw an attachment donut for source optode
