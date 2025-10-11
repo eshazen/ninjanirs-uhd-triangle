@@ -47,7 +47,10 @@ echo("peg dia", gpeg_dia);
 gcenter_hole = 1.67;
 
 module gbody() {
+  echo("gbody:");
+  echo("d1=",gtop_dia1,"d2=",gtop_dia2,"h=",gtop_hgt);
   cylinder( d1=gtop_dia1, d2=gtop_dia2, h=gtop_hgt);
+  echo("translate ", -gheight+gtop_hgt, "d=",gbody_dia, "h=",gheight);
   translate( [0, 0, -gheight+gtop_hgt])
     cylinder( d=gbody_dia, h=gheight);
 }

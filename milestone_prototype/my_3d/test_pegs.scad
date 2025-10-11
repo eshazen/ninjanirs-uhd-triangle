@@ -12,7 +12,7 @@ gpeg_len = 5;
 groove_offset = 0.5;
 groove_dia = gdet_hole_dia;
 groove_wid = hex_thk;
-g_shoulder = 3;		/* shoulder to support mesh */
+g_shoulder = 2;		/* shoulder to support mesh */
 
 // from grommet.scad
 // generate a (positive) groove geometry for a McMaster clip
@@ -35,5 +35,18 @@ module apeg( p_dia, p_len, g_offset, g_dia, g_wid)
      cylinder( d=p_dia+2.5, h=g_shoulder);
 }
 
-apeg(gpeg_dia, gpeg_len, groove_offset, groove_dia, groove_wid);
+//apeg(gpeg_dia, gpeg_len, groove_offset, groove_dia, groove_wid);
 
+// try some different sizes
+
+//    diam   len    offset  G dia  g wid
+apeg( 3.8,    5,    0.5,    3.2,   1);
+// translate( [10, 0, 0])
+// apeg( 4.0,    5,    0.5,    3.4,   1);
+// translate( [20, 0, 0])
+// apeg( 4.2,    5,    0.5,    3.6,   1);
+// translate( [30, 0, 0])
+// apeg( 4.4,    5,    0.5,    3.8,   1);
+// 
+// translate( [-3.5, -3.5, 4.5])
+// cube( [38, 7, 1]);

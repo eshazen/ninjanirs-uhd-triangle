@@ -32,11 +32,13 @@ module spring_attach() {
     translate( [0, 0, -attach_wire_dia/2]) {
       difference() {
 	   union() {
+	     echo("cyl h=",attach_wire_dia,"  d=",attach_ring_dia);
 		cylinder( h=attach_wire_dia, d=attach_ring_dia);
 		translate( [-attach_ring_dia/2, 0, 0])
 		     cube( [attach_ring_dia, attach_ring_dia/2, attach_wire_dia]);
 	   }
 	translate( [0, 0, -e])
+	  echo("hole h=",attach_wire_dia+2*e," d=",attach_ring_dia-2*attach_wire_dia)
 	  cylinder( h=attach_wire_dia+2*e, d=attach_ring_dia-2*attach_wire_dia);
       }
     }

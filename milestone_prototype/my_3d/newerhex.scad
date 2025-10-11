@@ -30,8 +30,8 @@ show_grommets = 0;
 show_optodes = 0;
 show_mesh = 1;
 
-rows = 1;
-cols = 1;
+rows = 2;
+cols = 2;
 
 optode_assembly_offset = 0.8;
 
