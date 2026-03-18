@@ -5,7 +5,8 @@
 e = 0.1;
   
 ring_dia = 7;
-ring_hole = 3.5;
+// ring_hole = 3.5;
+ring_hole = 3.75;
 
 hub_dia = 6.5;
 hub_thk = 1.8;
@@ -21,8 +22,7 @@ arm_angle = 65;
 module ring() {
   difference() {
     cylinder( d=ring_dia, h=thick);
-    translate( [0, 0, -e])
-      cylinder( d=ring_hole, h=thick+2*e);
+//    translate( [0, 0, -e]) cylinder( d=ring_hole, h=thick+2*e);
   }
 }
 
@@ -49,9 +49,23 @@ module hub() {
 	  spring_attach();
 }
 
-module springtop() {
+module springtop_solid() {
   translate( [0, 0, arm_raise])  hub();
   rings();
+}
+
+module springtop() {
+     difference() {
+	  springtop_solid();
+	  for( a=[0:120:240]) {
+	       rotate( [0, 0, a]) {
+		    // generate ring
+		    translate( [ring_offset, 0, 0])
+			 translate( [0, 0, -e]) cylinder( d=ring_hole, h=10);
+	       }
+	  }
+	  
+     }
 }
 
 

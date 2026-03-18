@@ -4,7 +4,7 @@ include <geom.scad>
 // ---------- Settings for rendering ----------
 big = 1;			/* overall scale */
 plate = 1;			/* flag: individual parts for 3D print plate */
-mesh = 1;			/* generate a mesh */
+mesh = 0;			/* generate a mesh */
 optode_assembly = 1;		/* generate the optodes */
 spo = 0;			/* spread for optodes from nominal positions */
 sources = 0;			/* generate source optodes */
@@ -62,7 +62,7 @@ module optodes( spread, cap) {
 module triplet() {
   if( optode_assembly) {
     color("#909050") translate( [0, 0, -11]) grommets();
-    color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len-gtop_hgt+e-11]) clip();
+//    color("red") translate( [0, 0, groove_offset+groove_wid/2-gpeg_len-gtop_hgt+e-11]) clip();
     color("white") springtop();
     optodes( 1, 3);
     color("blue") rotate([ 0, 0, 90]) translate([0, 0, arm_raise-spring_len-2.2]) spring();
@@ -82,15 +82,18 @@ pat_coords = [ [center_dist*sqrt(3)+spo, center_dist+spo, 0],
 	       [0, 2*center_dist+2*spo, 0] ];
 
 scale( [big, big, big]) {
-
+     
   if( plate == 1) { // ---------- for printing individual parts ----------
     // optode( 0, 4, 150, 2, 210, 2);  // two-opening
     // optode( 0, 0, 0, 0, 0, 0);       // no openings
     // optode( 210, 2, 0, 0, 0, 0);       // single opening
     // optodes( 2, 3);
-    // springtop();
+    springtop();
     // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8]) import("hpk_5mm.stl",10);
-    grommets();
+    // grommets();
+
+    // caps for printing
+    // optodes( 1.5, 1);
 
   } else {  // ---------- for viewing ----------
 
