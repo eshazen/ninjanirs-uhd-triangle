@@ -17,6 +17,7 @@ right-side up seems best if we can manage to get it off the support.
 Printing caps with same settings (right-side up).
 <br>Caps don't quite fit in springtop.
 
+
 #### Re-printing all with 0.2mm nozzle
 
 * Printing grommets using "0.06mm High Quality".  Time est 38min
@@ -38,7 +39,11 @@ Now the optodes, same settings.  Est 1:07.  Ok.
 And the caps.  45min.  OK
 
 Springtop:  enlarge hole to 3.75 and drill through the arms.  26m
+<br>Print failed (bad adhesion).  Cleaned plate and tried again.  Fail
+<br>Change to "0.12mm Standard" and added one layer of raft.  Fail.
 
+Probably need to print these with 0.5mm nozzle?  Or somehow create a raft?
+<br>Or possibly it's the white filament?
 
 ### 2025-11-23
 
