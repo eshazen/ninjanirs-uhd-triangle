@@ -7,7 +7,8 @@ e = 0.1;
 slot_hgt = 5;
 
 cap_thk = 2;
-cap_rim = 4.5;
+//cap_rim = 4.5;
+cap_rim = 3;
 
 body_dia = 10;
 body_hgt = optode_height-cap_thk;
