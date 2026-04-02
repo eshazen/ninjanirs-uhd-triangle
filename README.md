@@ -1,5 +1,13 @@
 # ninjanirs-uhd-triangle
 
+### 2026-03-20
+
+* Printing second springtop (still 1-up).
+<br>Printed two groups of 3 so total (8) pieces now (1 fail so 7 total)
+* Printing (4) grommets with brim (2:14)  OK.
+
+
+
 ### 2026-03-18
 
 Starting production print (some R&D first).
@@ -44,6 +52,14 @@ Springtop:  enlarge hole to 3.75 and drill through the arms.  26m
 
 Probably need to print these with 0.5mm nozzle?  Or somehow create a raft?
 <br>Or possibly it's the white filament?
+
+Reset bed temp to 55 per Steve's suggestion.
+<br>Clean bed with Dawn soap.  Add a brim.  Try again.  Success!
+
+    Process -> objects -> Others -> Brim type "Outer brim"
+
+Springtop now fits OK.
+
 
 ### 2025-11-23
 

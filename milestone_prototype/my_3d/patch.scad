@@ -90,10 +90,10 @@ scale( [big, big, big]) {
     // optodes( 2, 3);
     // springtop();
     // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8]) import("hpk_5mm.stl",10);
-    // grommets();
+    grommets();
 
     // caps for printing
-    optodes( 1.5, 1);
+    // optodes( 1.5, 1);
 
   } else {  // ---------- for viewing ----------
 
