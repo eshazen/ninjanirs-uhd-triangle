@@ -1,5 +1,13 @@
 # ninjanirs-uhd-triangle
 
+### 2026-06-04
+
+Printing UHD_Assembly_Filled
+<br>This version has a "hull" shape around the optodes for (much) faster printing and no support headaches
+
+Orient with light pipes facing up, tree support
+<br>Two versions:  Standard, and 0.08mm fine
+
 ### 2026-05-06
 
 Now working on solid triad for "production" for mechanical test.
