@@ -1,12 +1,21 @@
 # ninjanirs-uhd-triangle
 
+### 2026-05-06
+
+Now working on solid triad for "production" for mechanical test.
+<br>See `UHD_Assembly_Filled` in onshape.  Needs a new sketch which
+defines a convex hull around the optode features to fill in the body.
+Also need to fill the volume below the springtop with a pyramid-like
+solid.
+
+Really we need an algorithm which would traverse a range of Z and
+generate a 3D hull formed by a 2D hull at each Z.
+
 ### 2026-03-20
 
 * Printing second springtop (still 1-up).
 <br>Printed two groups of 3 so total (8) pieces now (1 fail so 7 total)
 * Printing (4) grommets with brim (2:14)  OK.
-
-
 
 ### 2026-03-18
 
