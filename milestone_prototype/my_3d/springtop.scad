@@ -34,9 +34,11 @@ module rings() {
       translate( [ring_offset, 0, 0]) ring();
       // generate arm, sloping upwards
       elen = sqrt(ring_offset*ring_offset+arm_raise*arm_raise);
-      translate( [1, -arm_wid/2, 1.25+arm_raise])
+      translate( [1, -arm_wid/2, 1.25+arm_raise]) {
 	rotate( [0, arm_angle, 0])
       	cube( [elen-ring_hole/4-ring_hole/2+1, arm_wid, thick]);
+	echo( elen-ring_hole/4-ring_hole/2+1, arm_wid, thick);
+      }
     }
   }
 }

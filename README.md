@@ -1,5 +1,19 @@
 # ninjanirs-uhd-triangle
 
+### 2026-07-27
+
+Printing 10 pcs `...onshape/UHD_Assembly_Filled_2026-07-13.stl` with .08mm extra fine.
+
+(the other ones are still in the car)
+
+### 2026-07-13
+
+Printing `...onshape/UHD_Assembly_Filled_2026-07-13.stl` with .08mm extra fine.
+
+40m time.
+
+David wants 25 pcs.
+
 ### 2026-06-04
 
 Printing UHD_Assembly_Filled

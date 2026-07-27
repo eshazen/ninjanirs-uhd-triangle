@@ -88,9 +88,9 @@ scale( [big, big, big]) {
     // optode( 0, 0, 0, 0, 0, 0);       // no openings
     // optode( 210, 2, 0, 0, 0, 0);       // single opening
     // optodes( 2, 3);
-    // springtop();
+    springtop();
     // rotate( [0, 0, 90]) translate( [-146.5, 73.8, -8]) import("hpk_5mm.stl",10);
-    grommets();
+    // grommets();
 
     // caps for printing
     // optodes( 1.5, 1);

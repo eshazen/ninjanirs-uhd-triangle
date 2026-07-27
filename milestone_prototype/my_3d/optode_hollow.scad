@@ -19,6 +19,7 @@ body_floor = 3;			/* body floor thickness*/
 tail_hgt = 6;
 
 peg_dia = 3.5;
+// peg_hgt = 2.5;
 peg_hgt = 2.5;
 
 // lg_hgt = 8.25;
